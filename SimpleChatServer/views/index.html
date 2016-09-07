@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+  <head>
+    <title>SimpleChatServer</title>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body { font: 13px Helvetica, Arial; }
+      div { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
+      input { border: 0; padding: 10px; width: 60%; margin-right: .5%; }
+      button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
+      #messages { list-style-type: none; margin: 0; padding: 0; }
+      #messages li { padding: 5px 10px; }
+      #messages li:nth-child(odd) { background: #eee; }	 
+		  
+    </style>
+	<link rel='stylesheet' type='text/css' href='/style.css'>
+	<script type="text/javascript" src="/socket.io/socket.io.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.1.js"></script>	
+	<script type="text/javascript">
+    $(function(){
+	
+	var socket = io(); //socketi tanýmlýyoruz. 
+	function MessageEvent(){ //mesaj gönderilmesi olayý
+	var nick = $('#username').val();
+	if(nick=="")
+	{
+	nick ="Anonymous : ";
+	socket.emit('chat', nick + $('#mesaj').val());//sunucuya mesaj kutusundaki yazýyý gönder
+	$('#mesaj').val(''); //mesaj kutusundaki yazýyý sýfýrla
+	}
+	else
+	{
+	nick = nick + " : ";
+    socket.emit('chat', nick + $('#mesaj').val());//sunucuya mesaj kutusundaki yazýyý gönder
+	$('#mesaj').val(''); //mesaj kutusundaki yazýyý sýfýrla
+	}
+	}
+	socket.on('chat', function(msg){ //sunucudan sohbetmesaj verisi geldiðinde çalýþacak fonksiyon
+	$('#messages').append($('<li>').text(msg)); //mesajlar idli elemente mesajý ekle. 
+	});
+
+	$('#sendmessage').click(MessageEvent);//mesajgonder butonuna týklayýnca mesajgonderolayý çaðýrýlýyor.
+
+	$('input#mesaj').bind('keypress', function(e) { //entera týklanýldýðýnda da mesajgonderolayýný çaðýrsýn. 
+	if(e.keyCode==13){
+	MessageEvent();
+	};
+	});
+	})
+	
+	function GetURLParameter(sParam)
+{
+    var sPageURL = window.location.search.substring(1);
+    var sURLVariables = sPageURL.split('=');    
+        if (sURLVariables[0] == sParam)
+        {
+            return sURLVariables[1];
+        }
+    }
+
+	
+	  function getUrlData() {
+                document.getElementById("username").value = GetURLParameter('param');
+            }
+	</script>
+	</head>
+	<body  onload="getUrlData()">
+	    
+        <ul id="nav">
+            <li><a href="/">Home</a></li>
+            <li><a href="/Register.html">Register</a></li>
+            <li><a href="Login.html">Login</a> </li>
+            <li class="pad"></li>
+        </ul>
+	<ul id="messages"></ul>
+	<div>
+	<input type="text" id="mesaj" placeholder="Send a Message"/>
+	<input type="text" id="username" style="width:29%" placeholder="Username"/>
+	<button id="sendmessage">Send Message</button>
+	</div>
+	</body>
+	</html>
+	
+	

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="UTF-8">
+	<title>SimpleChatServer</title>
+    <link rel="stylesheet" href="/login-reset.css">
+    <link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900|RobotoDraft:400,100,300,500,700,900'>
+	<link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
+    <link rel="stylesheet" href="/login-style.css">  
+	<link rel='stylesheet' type='text/css' href='/style.css'>
+    <script src="controller/account-controller.js"></script>	
+  </head>
+
+  <body>
+     
+        <ul id="nav">
+            <li><a href="/">Home</a></li>
+            <li><a href="/Register.html">Register</a></li>
+            <li><a href="Login.html">Login</a> </li>
+            <li class="pad"></li>
+        </ul>
+    
+  <div class="pen-title">
+  <h1>   Please Fill In The Blanks..</h1><span id=error-messages>Pen <i class='fa fa-paint-brush'></i> + <i class='fa fa-code'></i> by <a href='http://andytran.me'>Andy Tran</a></span>
+  </div>
+  <div class="module form-module">
+  <div class="toggle"><i class="fa fa-times fa-pencil"></i>
+  </div>  
+  <div class="form">
+    <h2>Create an account</h2>
+    <form id="frm" action="/Register.html" method="post">
+      <input type="text" placeholder="Username" name="username"/>
+      <input type="password" placeholder="Password" name="password"/>
+      <input type="email" placeholder="Email Address" name="email"/>
+      <button>Register</button>
+    </form>
+  </div>
+  </div>
