@@ -21,6 +21,7 @@ node app.js
 
 It is simple example about chat. You can see routing operations, Mongodb database operatins in this tutorial.
 
-You can see the chatpage
+You can see the pictures of it
 
-[![chatpage.png](https://s26.postimg.org/ecgruq8jd/chatpage.png)](https://postimg.org/image/mhytsvws5/)
+<a href="http://postimg.org/image/lkcx7wmut/" target="_blank"><img src="https://s26.postimg.org/j3160n2yh/chat.png" alt="chat"/></a><br/><br/>
+<a href="http://postimg.org/image/gzqqsz35h/" target="_blank"><img src="https://s26.postimg.org/yd117tygp/nodelo.png" alt="nodelo"/></a><br/><br/>
